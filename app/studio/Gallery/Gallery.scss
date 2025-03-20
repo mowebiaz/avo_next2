@@ -1,0 +1,77 @@
+@use '@/src/styles/variables' as *;
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.2rem;
+
+    .gallery-item {
+        position: relative;
+        svg {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            stroke: white;
+        }
+    }
+
+    .gallery-image {
+        justify-self: center;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border: 1px solid transparent;
+        &:hover {
+            cursor: pointer;
+            opacity: 0.8;
+            border: 1px solid $primary-color;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+
+.gallery-dialog {
+    position: relative;
+    margin: auto;
+    max-width: 90vw;
+    max-height: fit-content;
+
+    @media screen and (min-width: $medium) {
+        max-width: 70vw;
+    }
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .btn-close {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        z-index: 100;
+        outline: none;
+        width: 2rem;
+        height:2rem;
+/*         &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: $footer-color;
+            z-index:-1;
+            border-radius: 50%;
+        } */
+
+
+
+        svg {
+            stroke: $footer-color;
+            stroke-width: 5px;
+            width: 2rem;
+            height: 2rem;
+            fill: $primary-color;
+        }
+    }
+}

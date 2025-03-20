@@ -1,0 +1,74 @@
+@use '@/src/styles/variables' as *;
+@use 'sass:color';
+
+.mobile {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    background-color: $footer-color;
+}
+
+.burger-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+/*     border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%; */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $footer-color;
+    filter: opacity(0.8);
+}
+
+.nav-mobile {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 5rem 1rem 2rem 1rem;
+    background-color: $footer-color;
+    border-bottom-left-radius: 0.5rem;
+/*      border-bottom: 1px dotted $primary-color;
+    border-left: 1px dotted $primary-color;  */
+
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content: center;
+        gap: 1rem;
+
+        li a {
+            color: $primary-color;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            color: $primary-color;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 0.1rem;
+            transition: all 0.25s ease;
+            &.active {
+                background-color: $primary-color;
+                color: $footer-color;
+            }
+            &:hover {
+                border-color: $primary-color;
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width: 769px) {
+    .mobile {
+        display: none;
+    }
+}

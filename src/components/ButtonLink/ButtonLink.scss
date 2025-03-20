@@ -1,0 +1,20 @@
+@use '@/src/styles/variables' as *;
+@use '@/src/styles/mixins' as *;
+
+.button-link-router, .button-link-aria {
+@include buttonLink
+}
+
+.button-link-aria {
+    &[data-hovered],
+    &[data-pressed] {
+        background-color: $primary-color;
+        color: $footer-color;
+    }
+}
+
+.button-link-router:hover {
+    background-color: $primary-color;
+    color: $footer-color;
+}
+

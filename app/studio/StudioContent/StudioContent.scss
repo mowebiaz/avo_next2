@@ -1,0 +1,36 @@
+@use '@/src/styles/variables' as *;
+
+.studio-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .line-title {
+        /*padding-left: 0.5rem;*/
+        /*gap: 10px;*/
+        gap:0;
+    }
+
+    .equipments {
+        &-list {
+            list-style-position: inside;
+            list-style-type: square;
+            padding-left: 1rem;
+        }
+        &-badgelist {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 10px;
+            padding: 1rem;
+            li {
+                border: 1px solid $footer-color;
+                border-radius: 5px;
+                padding: 0.2rem 0.5rem;
+                font-size: 1.1rem;
+                box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.25);
+            }
+        }
+    }
+}

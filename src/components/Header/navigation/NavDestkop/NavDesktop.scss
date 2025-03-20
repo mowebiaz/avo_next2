@@ -1,0 +1,64 @@
+@use '@/src/styles/variables' as *;
+@use 'sass:color';
+
+.desktop {
+position: fixed;
+top: 0;
+  right: 0;
+  width: 100vw;
+  min-height: 4rem;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  /*z-index: 99;*/
+  background-color: $footer-color; 
+  box-shadow: 0 3px 10px color.scale($footer-color, $alpha: -20%);
+}
+
+.nav-desktop {
+    width: 100%;
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(0.1rem, 1.5vw, 2rem);
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            a {
+                font-weight: 600;
+                font-size: clamp(1rem, 0.25rem + 1.563vw, 1.25rem);
+                letter-spacing: 1px;
+                padding-block: 0.3rem;
+                padding-inline: clamp(0.3rem, 1.5vw, 1rem);
+                width: 100%;
+                height: 100%;
+                border-radius: 8px;
+                border: 1px solid transparent;
+                color: $primary-color;
+                text-decoration: none;
+                text-transform: uppercase;
+                transition: all 0.25s ease;
+
+                &.active {
+                    background-color: $primary-color;
+                    color: $footer-color;
+                }
+                &:hover {
+                    border-color: $primary-color;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $medium) {
+    .desktop {
+        display: none;
+    }
+}

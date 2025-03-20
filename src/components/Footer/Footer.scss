@@ -1,0 +1,64 @@
+@use '@/src/styles/variables' as *;
+@use '@/src/styles/mixins' as *;
+
+footer {
+    margin-top: auto; /* for sticky footer */
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $footer-color;
+    color: $background-color;
+    padding: 0.5rem;
+    .footer-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 0 1rem;
+        font-size: 0.8rem;
+        text-align: center;
+    }
+
+    .link {
+        text-decoration: underline dotted $background-color 1px;
+    }
+
+    .legal-link {
+        @include linkAria;
+    }
+
+    .link-admin {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        padding: 0.2rem;
+        margin-right: 0.5rem;
+        text-align: center;
+        width: max-content;
+        font-size: 1rem;
+        color: $primary-color;
+        border-radius: 5px;
+        border: 1px solid $primary-color;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+            background-color: $primary-color;
+            color: $footer-color;
+        }
+    }
+    /*     a:hover {
+        background-color: $secondary-color;
+        color: $footer-color;
+        border-radius: 5px;
+        text-decoration: none;
+    } */
+
+    .button-login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        padding-right: 0.5rem;
+    }
+}

@@ -1,0 +1,79 @@
+@use '@/src/styles/variables' as *;
+
+.acces {
+    h1 {
+        padding: 1rem 1rem 0.5rem 1rem;
+    }
+    li {
+        line-height: 1.2;
+        padding-bottom: 0.4rem;
+    }
+}
+
+.acces section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        scroll-margin-top: 4rem; /* height of sticky header */
+        border-top: 2px solid $secondary-color;
+        border-bottom: 2px solid $secondary-color;
+        text-align: center;
+        text-shadow: 1px 1px 1px $secondary-color;
+    }
+
+    h4 {
+        margin-top: 0.5rem;
+        text-align: center;
+    }
+    .line-title {
+        .icon-container {
+            margin-top: 0.5rem;
+        }
+    }
+
+    .table-definition {
+        text-align: center;
+        font-style: italic;
+        font-size: 1rem;
+    }
+
+    .tables {
+        margin: 0.5rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        align-items: flex-start;
+
+        table {
+            span {
+                font-size: 1rem;
+            }
+            &.timetable {
+                max-width: 400px;
+            }
+            border-collapse: collapse;
+            thead {
+                th {
+                    background-color: $secondary-color;
+                    border: 1px solid $footer-color;
+                    padding: 0.2rem;
+                }
+            }
+
+            td {
+                border: 1px solid $footer-color;
+                text-align: center;
+                line-height: 1.2;
+                padding: 0.3rem;
+            }
+        }
+    }
+    ul {
+        list-style-position: inside;
+        list-style-type: square;
+        padding-left: 1rem;
+    }
+}
