@@ -24,7 +24,7 @@ model Week {
   entryDate     DateTime @unique
   exitDate      DateTime 
   price         Int
-  disponibility Boolean
+  disponibility Boolean @default(true)
   Season        Season   @relation(fields: [seasonId], references: [id])
   seasonId      String
 }

@@ -34,17 +34,18 @@ main {
     flex-direction: column;
     align-items: center;
     flex: 1 0 auto;
-margin-top: 2rem;
-        @media screen and (min-width: $medium) {
-          margin-top: 5rem;
-        }
+    margin-top: 2rem;
     margin-bottom: 1rem;
     width: 85vw;
     max-width: $max-width;
+    @media screen and (min-width: $medium) {
+        margin-top: 5rem;
+    }
 }
 
 h1 {
-    font-family: var(--font-merienda), "Brush Script MT", "Comic Sans MS", cursive;
+    font-family: var(--font-merienda), 'Brush Script MT', 'Comic Sans MS',
+        cursive;
     text-align: center;
     font-size: clamp(1.6rem, 1.369rem + 0.985vw, 2rem);
     text-wrap: balance;
@@ -61,7 +62,6 @@ h3 {
     font-size: clamp(1.25rem, 1.106rem + 0.616vw, 1.5rem);
     color: hsla(0, 0%, 20%, 1);
     margin-top: 0.5rem;
-
 }
 
 a {
