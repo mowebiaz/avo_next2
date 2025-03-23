@@ -11,10 +11,16 @@
             color: $footer-color;
         }
     }
+    
     button[type='submit'] {
         display: inline-flex;
         align-self: center;
         width: fit-content;
+    }
+
+    .div-form {
+        display: flex;
+        justify-content: center;
     }
 
     form {

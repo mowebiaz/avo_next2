@@ -1,16 +1,24 @@
+import { prisma } from '@/src/lib/prisma'
 import Link from 'next/link'
 import { FaSnowflake } from 'react-icons/fa6'
 import { FaUser } from 'react-icons/fa'
 import { PriceTable } from '../PriceTable/PriceTable'
 import './LocationContent.scss'
 
-export function LocationContent() {
+export async function LocationContent() {
+  const seasons = await prisma.season.findMany()
+
   return (
     <div className="location-content">
       <h1>Studio à louer à Avoriaz - Disponibilités et Tarifs</h1>
-      <section>
+      <section className='disponibilities'>
         <h2>Disponibilités et tarifs</h2>
-        <PriceTable />
+        {seasons?.map((season) => (
+          <PriceTable
+            key={season.id}
+            seasonId={season.id}
+          />
+        ))}
       </section>
 
       <section className="conditions">

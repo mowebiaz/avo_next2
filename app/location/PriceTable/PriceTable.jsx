@@ -1,12 +1,25 @@
-'use client'
-
+import { prisma } from '@/src/lib/prisma'
 import './PriceTable.scss'
 
-export function PriceTable() {
+export async function PriceTable({ seasonId }) {
+  const season = await prisma.season.findUnique({
+    where: {
+      id: seasonId,
+    },
+  })
+
+  const weeks = await prisma.week.findMany({
+    where: {
+      seasonId: seasonId,
+    },
+    orderBy: {
+      entryDate: 'asc',
+    },
+  })
 
   return (
     <div>
-      <h3>Hiver 2024-2025</h3>
+      <h3>{season.name}</h3> 
       <div className="legend">
         <div className="legend-item">
           <span className="square free"></span>
@@ -26,21 +39,26 @@ export function PriceTable() {
           </tr>
         </thead>
         <tbody>
-{/*           {weeks.map((week) => (
+          {weeks?.map((week) => (
             <tr
               key={week.id}
-              className={week.dispo ? '' : 'booked'}
+              className={week.disponibility ? '' : 'booked'}
             >
               <td>
-                {week.entryDate.toDate().toLocaleDateString('fr-FR', {
+                {week.entryDate.toLocaleDateString('fr-FR', {
                   day: 'numeric',
                   month: 'long',
                 })}
               </td>
-              <td>{addDaysToDate(week.entryDate.toDate())}</td>
+              <td>
+                {week.exitDate.toLocaleDateString('fr-FR', {
+                  day: 'numeric',
+                  month: 'long',
+                })}
+              </td>
               <td>{week.price}€</td>
             </tr>
-          ))} */}
+          ))}
         </tbody>
       </table>
     </div>

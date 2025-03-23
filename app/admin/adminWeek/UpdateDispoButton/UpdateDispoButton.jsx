@@ -1,22 +1,23 @@
 'use client'
 
-import './ButtonSwitch.scss'
+import { updateDisponibility } from '@/app/actions/prisma_weeks'
+import './UpdateDispoButton.scss'
 
-export function ButtonSwitch({ id, isChecked, onToggle }) {
-  const handleCheck = () => {
-    onToggle(!isChecked)
-  }
+export function UpdateDispoButton({ week, isChecked }) {
+  const handleCheck = async () => {
+    await updateDisponibility(week.id, !isChecked)
+  } 
 
   return (
     <label
-      htmlFor={id}
+      htmlFor={week.id}
       className="btn-switch"
     >
       <input
         type="checkbox"
         role="switch"
-        name={id}
-        id={id}
+        /*name={id}*/
+        id={week.id}
         checked={isChecked}
         onChange={handleCheck}
       />
@@ -28,3 +29,4 @@ export function ButtonSwitch({ id, isChecked, onToggle }) {
     </label>
   )
 }
+

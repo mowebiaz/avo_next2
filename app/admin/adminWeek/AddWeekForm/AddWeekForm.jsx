@@ -1,13 +1,17 @@
+'use client'
+
 import { useRef } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 /* import {
   addMultipleWeeks,
   checkIfWeekExists,
 } from '@/app/lib/firebase/firestore' */
+ import { UserMessage } from '@/src/components/UserMessage/UserMessage'
 import { IoMdAddCircle } from 'react-icons/io'
+import { checkIfWeekExists, createWeek } from '@/app/actions/prisma_weeks'
 import './AddWeekForm.scss'
 
-export function AddWeekForm() {
+export function AddWeekForm({ season }) {
   const formRef = useRef(null)
   const btnFormRef = useRef(null)
 
@@ -24,7 +28,7 @@ export function AddWeekForm() {
     formState: { errors, isSubtmitting },
   } = useForm({
     defaultValues: {
-      newWeek: [{ entryDate: '', dispo: false, price: '' }],
+      newWeek: [{ entryDate: '', price: '', disponibility: false }],
     },
   })
 
@@ -33,27 +37,12 @@ export function AddWeekForm() {
     name: 'newWeek',
   })
 
-  const onSubmit = async (data) => {
-/*     // transform data to List
-    const weeksList = data.newWeek
-    // Format list for firestore
-    const formatedWeeksList = weeksList.map((week) => ({
-      ...week,
-      entryDate: Timestamp.fromDate(new Date(week.entryDate)),
-      price: Number(week.price),
-    })) */
-
-    try {
-      //await addMultipleWeeks(formatedWeeksList)
-      console.log(data)
-      alert('semaine(s) ajoutée(s)')
-      reset()
-      formRef.current.style.display = 'none'
-      btnFormRef.current.style.display = 'flex'
-    } catch (error) {
-      alert("Les semaines n'ont pas pu étre ajoutées")
-      console.log(error)
-    }
+  const onSubmit = (data) => {
+    createWeek(data, season)
+    alert('semaine(s) ajoutée(s)')
+    reset()
+    formRef.current.style.display = 'none'
+    btnFormRef.current.style.display = 'flex'
   }
 
   return (
@@ -88,10 +77,10 @@ export function AddWeekForm() {
                   name="date"
                   {...register(`newWeek.${index}.entryDate`, {
                     required: 'Veuillez renseigner la date',
-/*                     validate: async (value) => {
+                    validate: async (value) => {
                       const exists = await checkIfWeekExists(value)
                       return !exists || 'Cette semaine existe déjà.'
-                    }, */
+                    },
                   })}
                 />
                 {errors?.newWeek?.[index]?.entryDate && (
@@ -99,16 +88,6 @@ export function AddWeekForm() {
                     {errors.newWeek[index].entryDate.message}
                   </p>
                 )}
-              </div>
-
-              <div>
-                <label htmlFor="dispo">Disponible ?</label>
-                <input
-                  type="checkbox"
-                  id="dispo"
-                  name="dispo"
-                  {...register(`newWeek.${index}.dispo`)}
-                />
               </div>
 
               <div>
@@ -127,6 +106,16 @@ export function AddWeekForm() {
                   </p>
                 )}
               </div>
+
+              <div>
+                <label htmlFor="disponibility">Disponible ?</label>
+                <input
+                  type="checkbox"
+                  id="disponibility"
+                  name="disponibility"
+                  {...register(`newWeek.${index}.disponibility`)}
+                />
+              </div>
             </div>
           ))}
 
@@ -134,7 +123,9 @@ export function AddWeekForm() {
             type="button"
             className="btn-add"
             disabled={isSubtmitting}
-            onClick={() => append({ entryDate: '', dispo: false, price: '' })}
+            onClick={() =>
+              append({ entryDate: '', price: '', disponibility: false })
+            }
           >
             <IoMdAddCircle />
           </button>

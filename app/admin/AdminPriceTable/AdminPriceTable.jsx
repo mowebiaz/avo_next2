@@ -1,66 +1,75 @@
-
-import { ButtonSwitch } from '@/src/components/ButtonSwitch/ButtonSwitch'
-import { FaTrashAlt } from 'react-icons/fa'
+import { prisma } from '@/src/lib/prisma'
+import { AddWeekForm } from '../adminWeek/AddWeekForm/AddWeekForm'
+import { DeleteWeekButton } from '../adminWeek/DeleteWeekButton'
+import { UpdateDispoButton } from '../adminWeek/UpdateDispoButton/UpdateDispoButton'
 import './AdminPriceTable.scss'
 
-export function AdminPriceTable() {
+export async function AdminPriceTable({ seasonId }) {
+  const season = await prisma.season.findUnique({
+    where: {
+      id: seasonId,
+    },
+  })
 
-/*   const toggleDispo = (id, newDispo) => {
-    updateDispo(id, newDispo)
-  } */
+  const weeks = await prisma.week.findMany({
+    where: {
+      seasonId: seasonId,
+    },
+    orderBy: {
+      entryDate: 'asc',
+    },
+  })
 
   return (
     <>
       <div className="admin-table-container">
+        <div className="admin-table-title">
+          <h2>{season.name}</h2>
+          <button>Modifier</button>
+          <button>Supprimer</button>
+        </div>
         <table className="admin-table">
           <thead>
             <tr>
-              {['Arrivée', 'Départ', 'Prix (€)', 'Dispo ?'].map(
+              {['Arrivée', 'Départ', 'Prix (€)', 'Dispo ?', 'Supprimer'].map(
                 (header, index) => (
                   <th key={index}>{header}</th>
                 )
               )}
-              <th key="btn-delete">
-                {/* <button onClick={deleteWeeks} disabled={weeksToDelete.length === 0}> */}
-                <button>
-                  <FaTrashAlt />
-                </button>
-              </th>
             </tr>
           </thead>
-{/*           <tbody>
-            {weekList.map((week) => (
+          <tbody>
+            {weeks?.map((week) => (
               <tr key={week.id}>
                 <td>
-                  {week.entryDate.toDate().toLocaleDateString('fr-FR', {
+                  {week.entryDate.toLocaleDateString('fr-FR', {
                     day: 'numeric',
                     month: 'long',
                   })}
                 </td>
-                <td>{addDaysToDate(week.entryDate.toDate())}</td>
+
+                <td>
+                  {week.exitDate.toLocaleDateString('fr-FR', {
+                    day: 'numeric',
+                    month: 'long',
+                  })}
+                </td>
+
                 <td>{week.price}</td>
 
                 <td>
-                  <ButtonSwitch
-                    id={'btn-dispo-' + week.id}
-                    isChecked={week.dispo}
-                    onToggle={(newDispo) => toggleDispo(week.id, newDispo)}
-                  />
+                  <UpdateDispoButton 
+                  week={week} isChecked={week.disponibility} />
                 </td>
                 <td>
-                  <label htmlFor={'btn-delete-' + week.id}>
-                    <input
-                      type="checkbox"
-                      name={'btn-delete-' + week.id}
-                      id={'btn-delete-' + week.id}
-                      onChange={() => handleCheck(week.id)}
-                    />
-                  </label>
+                  <DeleteWeekButton 
+                  week={week} />
                 </td>
               </tr>
             ))}
-          </tbody> */}
+          </tbody>
         </table>
+        <AddWeekForm season={seasonId} />
       </div>
     </>
   )

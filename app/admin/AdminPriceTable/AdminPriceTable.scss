@@ -2,6 +2,15 @@
 
 .admin-table-container {
     width: 100%;
+    h2 {
+        margin-top: 0;
+    }
+}
+
+.admin-table-title {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
 }
 
 table.admin-table {

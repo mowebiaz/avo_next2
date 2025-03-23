@@ -1,10 +1,13 @@
 @use '@/src/styles/variables' as *;
 @use '@/src/styles/mixins' as *;
 
+.disponibilities {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 .conditions {
-    /*     a {
-        display: contents;
-    } */
     a.link {
         &:hover {
             @include linkrouterHover;
