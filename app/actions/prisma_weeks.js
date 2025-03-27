@@ -36,21 +36,7 @@ export async function checkIfWeekExists(entryDate) {
         entryDate: new Date(entryDate),
       },
     })
-    return !!week // Retourne true si une semaine existe
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-export async function deleteWeek(weekId) {
-  try {
-    await prisma.week.delete({
-      where: {
-        id: weekId,
-      },
-    })
-    revalidatePath('/admin')
-    revalidatePath('/location')
+    return !!week // Return true if week exists
   } catch (error) {
     console.log(error)
   }
@@ -72,3 +58,19 @@ export async function updateDisponibility(weekId, disponibility) {
     console.log(error)
   }
 }
+
+export async function deleteWeek(weekId) {
+  try {
+    await prisma.week.delete({
+      where: {
+        id: weekId,
+      },
+    })
+    revalidatePath('/admin')
+    revalidatePath('/location')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+

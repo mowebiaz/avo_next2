@@ -39,7 +39,7 @@ export function AddWeekForm({ season }) {
 
   const onSubmit = (data) => {
     createWeek(data, season)
-    alert('semaine(s) ajoutée(s)')
+    //alert('semaine(s) ajoutée(s)')
     reset()
     formRef.current.style.display = 'none'
     btnFormRef.current.style.display = 'flex'

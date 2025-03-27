@@ -63,7 +63,7 @@ export async function AdminPriceTable({ seasonId }) {
                 </td>
                 <td>
                   <DeleteWeekButton 
-                  week={week} />
+                  week={week.id} />
                 </td>
               </tr>
             ))}

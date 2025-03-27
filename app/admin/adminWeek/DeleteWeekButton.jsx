@@ -3,11 +3,11 @@
 import { FaTrashAlt } from 'react-icons/fa'
 import { deleteWeek } from '@/app/actions/prisma_weeks'
 
-export function DeleteWeekButton({weekId})  {
+export function DeleteWeekButton({week})  {
 const handleClick = async () => {
-  await deleteWeek(weekId)
-  alert('semaine supprimée')
-}
+  await deleteWeek(week)
+  //alert('semaine supprimée')
+} 
 
   return (
       <button onClick={handleClick}>
