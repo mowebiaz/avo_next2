@@ -1,10 +1,11 @@
-import { prisma } from '@/src/lib/prisma'
 import { AdminPriceTable } from './AdminPriceTable/AdminPriceTable'
 import { ButtonLogout } from './ButtonLogout/ButtonLogout'
 import { AddSeasonForm } from './adminSeason/AddSeasonForm'
+import { getSortedSeasonsByEntryDate } from '../../src/lib/utils/getSortedSeasonsByEntryDate'
 
 export default async function Admin() {
-const seasons = await prisma.season.findMany()
+
+  const seasons = await getSortedSeasonsByEntryDate()
 
   return (
     <main className="admin">

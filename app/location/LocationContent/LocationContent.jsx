@@ -1,12 +1,12 @@
-import { prisma } from '@/src/lib/prisma'
 import Link from 'next/link'
+import { getSortedSeasonsByEntryDate } from '@/src/lib/utils/getSortedSeasonsByEntryDate'
+import { PriceTable } from '../PriceTable/PriceTable'
 import { FaSnowflake } from 'react-icons/fa6'
 import { FaUser } from 'react-icons/fa'
-import { PriceTable } from '../PriceTable/PriceTable'
 import './LocationContent.scss'
 
 export async function LocationContent() {
-  const seasons = await prisma.season.findMany()
+  const seasons = await getSortedSeasonsByEntryDate()
 
   return (
     <div className="location-content">
