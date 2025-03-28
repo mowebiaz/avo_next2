@@ -2,6 +2,7 @@ import { prisma } from '@/src/lib/prisma'
 import { AddWeekForm } from '../adminWeek/AddWeekForm/AddWeekForm'
 import { DeleteWeekButton } from '../adminWeek/DeleteWeekButton'
 import { UpdateDispoButton } from '../adminWeek/UpdateDispoButton/UpdateDispoButton'
+import { EditableSeasonTitle } from '../adminSeason/EditableSeasonTitle'
 import './AdminPriceTable.scss'
 
 export async function AdminPriceTable({ seasonId }) {
@@ -12,7 +13,7 @@ export async function AdminPriceTable({ seasonId }) {
   })
 
   const weeks = await prisma.week.findMany({
-    where: {
+    where: {  
       seasonId: seasonId,
     },
     orderBy: {
@@ -23,11 +24,7 @@ export async function AdminPriceTable({ seasonId }) {
   return (
     <>
       <div className="admin-table-container">
-        <div className="admin-table-title">
-          <h2>{season.name}</h2>
-          <button>Modifier</button>
-          <button>Supprimer</button>
-        </div>
+        <EditableSeasonTitle seasonId={season.id} initialTitle={season.name}/>
         <table className="admin-table">
           <thead>
             <tr>

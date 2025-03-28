@@ -15,3 +15,18 @@ export async function createSeason(formData) {
     console.log(error)
   }
 }
+
+export async function updateSeason(id, newTitle) {
+  try {
+    await prisma.season.update({
+      where: { id },
+      data: {
+        name: newTitle,
+      },
+    })
+    revalidatePath('/admin')
+    revalidatePath('/location')
+  } catch (error) {
+    console.log(error)
+  }
+}
