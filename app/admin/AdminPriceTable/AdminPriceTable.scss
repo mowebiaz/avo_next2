@@ -1,5 +1,9 @@
 @use '@/src/styles/variables' as *;
 
+main.admin {
+    width: 90vw;
+}
+
 .admin-table-container {
     width: 100%;
     margin-bottom: 1rem;
@@ -12,6 +16,10 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+    button {
+        display: flex;
+        align-items: center;
+    }
 }
 
 table.admin-table {
@@ -34,10 +42,15 @@ table.admin-table {
             }
         }
     }
+
+
+
     tbody td {
         border: 1px solid $footer-color;
+
         text-align: center;
         padding: 5px;
+
         label {
             width: fit-content;
             justify-self: center;

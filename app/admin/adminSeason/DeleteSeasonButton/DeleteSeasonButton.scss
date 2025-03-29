@@ -1,0 +1,64 @@
+@use '@/src/styles/variables' as *;
+@use '@/src/styles/mixins' as *;
+
+.confirm-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    background-color: $footer-color;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: $background-color;
+    border: 1px solid $primary-color;
+
+    span {
+        font-weight: 700;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+
+        button {
+            padding: 0.5rem;
+            border-radius: 8px;
+            margin: 0.5rem;
+            font-weight: 600;
+            @media screen and (max-width: 425px) {
+                font-size: 1rem;
+            }
+
+            &:first-child {
+                background-color: $footer-color;
+                color: $primary-color;
+                border: 1px solid $primary-color;
+
+                &:hover {
+                    background-color: $primary-color;
+                    color: $footer-color;
+                }
+            }
+            &:not(:first-child) {
+                border: 1px solid #fd0d0d;
+                background-color: #fd0d0d;
+                color: #ffd6d6;
+
+                &:hover {
+                    background-color: #ad0707;
+                    color: black;
+                }
+            }
+        }
+    }
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+}

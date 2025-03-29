@@ -35,7 +35,7 @@ export function EditableSeasonTitle({ seasonId, initialTitle }) {
   }
 
   return (
-    <div className="admin-table-title ">
+    <>
       {isEditing ? (
         <input
           type="text"
@@ -58,6 +58,6 @@ export function EditableSeasonTitle({ seasonId, initialTitle }) {
           </button>
         </>
       )}
-    </div>
+      </>
   )
 }

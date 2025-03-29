@@ -30,3 +30,15 @@ export async function updateSeason(id, newTitle) {
     console.log(error)
   }
 }
+
+export async function deleteSeason(id) {
+  try {
+    await prisma.season.delete({
+      where: { id },
+    })
+    revalidatePath('/admin')
+    revalidatePath('/location')
+  } catch (error) {
+    console.log(error)
+  }
+}

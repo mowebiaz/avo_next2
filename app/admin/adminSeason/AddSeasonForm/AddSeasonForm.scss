@@ -1,0 +1,56 @@
+@use '@/src/styles/variables' as *;
+@use '@/src/styles/mixins' as *;
+@use 'sass:color';
+
+.admin {
+    .form-addSeason-title {
+        align-self: flex-start;
+    }
+    .form-addSeason {
+        align-self: flex-start;
+        display: flex;
+        flex-wrap: wrap;
+
+        .new-season {
+            background-color: $footer-color;
+            border-radius: 10px;
+            padding: 0.5rem;
+            gap: 1rem;
+
+            div {
+                display: flex;
+                flex-direction: column;
+                background-color: $background-color;
+                padding: 0.5rem;
+                border: 1px solid $footer-color;
+                border-radius: 10px;
+
+                input {
+                    padding: 0.2rem;
+                    border-radius: 5px;
+                    background-color: color.scale(
+                        $footer-color,
+                        $lightness: 60%
+                    );
+                    margin-bottom: 0.2rem;
+                    outline: none;
+                    border: 1px solid transparent;
+                    &:focus {
+                        border: 1px solid $footer-color;
+                    }
+                }
+            }
+        }
+
+        button[type='submit'] {
+            @include buttonLink;
+            display: inline-flex;
+            align-self: center;
+            width: fit-content;
+            &:hover {
+                background-color: $primary-color;
+                color: $footer-color;
+            }
+        }
+    }
+}

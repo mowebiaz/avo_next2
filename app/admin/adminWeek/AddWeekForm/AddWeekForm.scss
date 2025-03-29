@@ -3,74 +3,83 @@
 @use 'sass:color';
 
 .admin {
-    .btn-addweek,
-    button[type='submit'] {
+    .btn-addweek {
         @include buttonLink;
+        margin-left: 0;
+        @media screen and (max-width: 425px) {
+            font-size: 1rem;
+        }
         &:hover {
             background-color: $primary-color;
             color: $footer-color;
         }
-    }
-    
-    button[type='submit'] {
-        display: inline-flex;
-        align-self: center;
-        width: fit-content;
+
     }
 
-    .div-form {
+    .form-addWeek {
         display: flex;
         justify-content: center;
-    }
 
-    form {
-        margin-top: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-
-        .new-week {
-            display: flex;
-            width: 100%;
-            /*justify-content: space-between;*/
-            justify-content: center;
-            flex-wrap: wrap;
-            border-radius: 10px;
-            padding: 0.5rem;
-            gap: 1rem;
-            background-color: $footer-color;
-            div {
-                background-color: $background-color;
-                display: flex;
-                flex-direction: column;
-                padding: 0.5rem;
-                border: 1px solid $footer-color;
-                border-radius: 10px;
-                /*height: 100%;*/
-                input {
-                    padding: 0.2rem;
-                    border-radius: 5px;
-                    background-color: color.scale(
-                        $footer-color,
-                        $lightness: 60%
-                    );
-                    margin-bottom: 0.2rem;
-                    outline: none;
-                    border: 1px solid transparent;
-                    &:focus {
-                        border: 1px solid $footer-color;
-                    }
-                }
-                input[type='checkbox'] {
-                    @include checkbox;
-                    margin: auto;
-                }
+        button[type='submit'] {
+            @include buttonLink;
+            display: inline-flex;
+            align-self: center;
+            width: fit-content;
+            &:hover {
+                background-color: $primary-color;
+                color: $footer-color;
             }
         }
-        .btn-add svg {
-            width: 2rem;
-            height: 2rem;
-            fill: $footer-color;
+        form {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            .new-week {
+                display: flex;
+                width: 100%;
+                /*justify-content: space-between;*/
+                justify-content: center;
+                flex-wrap: wrap;
+                border-radius: 10px;
+                padding: 0.5rem;
+                gap: 1rem;
+                background-color: $footer-color;
+                div {
+                    background-color: $background-color;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 0.5rem;
+                    border: 1px solid $footer-color;
+                    border-radius: 10px;
+                    /*height: 100%;*/
+                    width: 100%;
+                    input {
+                        padding: 0.2rem;
+                        border-radius: 5px;
+                        background-color: color.scale(
+                            $footer-color,
+                            $lightness: 60%
+                        );
+                        margin-bottom: 0.2rem;
+                        outline: none;
+                        border: 1px solid transparent;
+                        &:focus {
+                            border: 1px solid $footer-color;
+                        }
+                    }
+                    input[type='checkbox'] {
+                        @include checkbox;
+                        margin: auto;
+                    }
+                }
+            }
+            .btn-add svg {
+                width: 2rem;
+                height: 2rem;
+                fill: $footer-color;
+            }
         }
     }
 }

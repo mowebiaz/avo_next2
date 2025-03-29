@@ -3,6 +3,7 @@ import { AddWeekForm } from '../adminWeek/AddWeekForm/AddWeekForm'
 import { DeleteWeekButton } from '../adminWeek/DeleteWeekButton'
 import { UpdateDispoButton } from '../adminWeek/UpdateDispoButton/UpdateDispoButton'
 import { EditableSeasonTitle } from '../adminSeason/EditableSeasonTitle'
+import { DeleteSeasonButton } from '../adminSeason/DeleteSeasonButton/DeleteSeasonButton'
 import './AdminPriceTable.scss'
 
 export async function AdminPriceTable({ seasonId }) {
@@ -24,11 +25,14 @@ export async function AdminPriceTable({ seasonId }) {
   return (
     <>
       <div className="admin-table-container">
+        <div className='admin-table-title'>
         <EditableSeasonTitle seasonId={season.id} initialTitle={season.name}/>
+        <DeleteSeasonButton season={season} />
+        </div>
         <table className="admin-table">
           <thead>
             <tr>
-              {['Arrivée', 'Départ', 'Prix (€)', 'Dispo ?', 'Supprimer'].map(
+              {['Arrivée', 'Départ', 'Prix (€)', 'Dispo ?', ''].map(
                 (header, index) => (
                   <th key={index}>{header}</th>
                 )

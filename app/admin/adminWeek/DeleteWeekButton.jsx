@@ -10,7 +10,7 @@ const handleClick = async () => {
 } 
 
   return (
-      <button onClick={handleClick}>
+      <button onClick={handleClick} title='Supprimer la semaine'>
         <FaTrashAlt />
       </button>
   )

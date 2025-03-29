@@ -2,11 +2,7 @@
 
 import { useRef } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
-/* import {
-  addMultipleWeeks,
-  checkIfWeekExists,
-} from '@/app/lib/firebase/firestore' */
- import { UserMessage } from '@/src/components/UserMessage/UserMessage'
+import { UserMessage } from '@/src/components/UserMessage/UserMessage'
 import { IoMdAddCircle } from 'react-icons/io'
 import { checkIfWeekExists, createWeek } from '@/app/actions/prisma_weeks'
 import './AddWeekForm.scss'
@@ -25,6 +21,7 @@ export function AddWeekForm({ season }) {
     handleSubmit,
     register,
     reset,
+    trigger,
     formState: { errors, isSubtmitting },
   } = useForm({
     defaultValues: {
@@ -59,7 +56,7 @@ export function AddWeekForm({ season }) {
 
       <div
         ref={formRef}
-        className="div-form"
+        className="form-addWeek"
         style={{ display: 'none' }}
       >
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -123,9 +120,12 @@ export function AddWeekForm({ season }) {
             type="button"
             className="btn-add"
             disabled={isSubtmitting}
-            onClick={() =>
-              append({ entryDate: '', price: '', disponibility: false })
-            }
+            onClick={async () => {
+              const isValid = await trigger()
+              if (isValid) {
+                append({ entryDate: '', price: '', disponibility: false })
+              }
+            }}
           >
             <IoMdAddCircle />
           </button>
