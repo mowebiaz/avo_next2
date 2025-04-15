@@ -1,7 +1,7 @@
 import { Header } from '@/src/components/Header/Header'
 import { Footer } from '@/src/components/Footer/Footer'
 import { ReactAriaRouter } from '@/src/context/ReactAriaRouter'
-//import { CookieBanner } from './components/CookieBanner/CookieBanner'
+import { CookieBanner } from '@/src/components/CookieBanner/CookieBanner'
 import { merienda, raleway } from '@/src/styles/fonts'
 import '@/src/styles/globals.scss'
 
@@ -27,10 +27,10 @@ export default function RootLayout({ children }) {
     <html lang="fr">
       <body className={`${merienda.variable} ${raleway.variable}`}>
         <ReactAriaRouter>
-            <Header />
-            {children}
-            <Footer />
-          {/* <CookieBanner /> */}
+          <Header />
+          {children}
+          <Footer />
+          <CookieBanner />
         </ReactAriaRouter>
       </body>
     </html>
