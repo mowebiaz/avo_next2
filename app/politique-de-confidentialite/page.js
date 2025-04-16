@@ -5,6 +5,10 @@ export const metadata = {
   alternates: {
     canonical: 'https://avoriazloc.fr/politique-de-confidentialite',
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
 }
 
 export default function PolitiqueDeConfidentialite() {

@@ -41,18 +41,6 @@ export default function sitemap() {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.5,
-    },
-    {
-      url: 'https://avoriazloc.fr/mentions-legales',
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.1,
-    },
-    {
-      url: 'https://avoriazloc.fr/politique-de-confidentialite',
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.1,
-    },
+    }
   ]
 }
