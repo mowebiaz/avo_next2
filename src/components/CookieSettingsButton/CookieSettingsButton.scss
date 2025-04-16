@@ -1,0 +1,12 @@
+@use '@/src/styles/variables' as *;
+@use '@/src/styles/mixins' as *;
+
+.cookie-settings-button {
+    @include buttonLink;
+    padding: 0.3rem 0.5rem;
+    &[data-pressed],
+    &[data-hovered] {
+        background-color: $primary-color;
+        color: $footer-color;
+    }
+}

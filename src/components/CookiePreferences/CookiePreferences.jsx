@@ -1,14 +1,15 @@
 'use client'
 
 import { useState } from 'react'
-import { Button } from 'react-aria-components'
+import { Button, Checkbox } from 'react-aria-components'
+import './CookiePreferences.scss'
 
 export function CookiePreferences({ initialConsent, onSave, onCancel }) {
   const [consent, setConsent] = useState(initialConsent)
 
   return (
     <div className="cookie-modal">
-      <h2>Préférences de cookies</h2>
+      <p className="title">Préférences de cookies</p>
 
       <div>
         <label>
@@ -30,7 +31,7 @@ export function CookiePreferences({ initialConsent, onSave, onCancel }) {
               setConsent({ ...consent, analytics: e.target.checked })
             }
           />
-          Cookies de statistiques (ex: Google Analytics)
+          Statistiques (ex: Google Analytics)
         </label>
       </div>
 
@@ -43,11 +44,11 @@ export function CookiePreferences({ initialConsent, onSave, onCancel }) {
               setConsent({ ...consent, marketing: e.target.checked })
             }
           />
-          Cookies marketing / tiers (ex: Google Maps)
+          Marketing / tiers (ex: Google Maps)
         </label>
       </div>
 
-      <div className="buttons">
+      <div className="buttons-container">
         <Button onPress={() => onSave(consent)}>Enregistrer mes choix</Button>
         <Button onPress={onCancel}>Annuler</Button>
       </div>

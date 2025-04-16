@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react'
 import Script from 'next/script'
-import { Button, Link } from 'react-aria-components'
+ import { Button, Link } from 'react-aria-components'
 import { getConsent, saveConsent } from './cookies'
-import { CookiePreferences } from './CookiePreferences'
+import { CookiePreferences } from '../CookiePreferences/CookiePreferences'
+import { notifyCookieConsentChange, subscribeCookieConsentChange } from '../../lib/utils/cookieConsentEmitter'
 import './CookieBanner.scss'
 
 export function CookieBanner() {
@@ -12,17 +13,28 @@ export function CookieBanner() {
   const [showPreferences, setShowPreferences] = useState(false)
   const [consent, setConsent] = useState(null)
 
-  // Vérifie lors du montage si un choix a déjà été enregistré
   useEffect(() => {
     const storedConsent = getConsent()
-    // On considère qu'un choix a été fait si une date de consentement est présente
     if (!storedConsent.consentedAt) {
       setShowBanner(true)
     }
     setConsent(storedConsent)
   }, [])
 
-  // Dès que le consentement est disponible et pour le cas Analytics, on met à jour le Consent Mode v2
+    // Subscribe to consent changes to update banner display
+    useEffect(() => {
+      const unsubscribe = subscribeCookieConsentChange((newConsent) => {
+        setConsent(newConsent)
+        if (newConsent && newConsent.consentedAt) {
+          setShowBanner(false)
+        } else {
+          setShowBanner(true)
+        }
+      })
+      return () => unsubscribe()
+    }, [])
+
+  // As soon as consent is available and for Analytics, update Consent Mode v2
   useEffect(() => {
     if (consent && consent.analytics) {
       if (typeof window !== 'undefined' && window.gtag) {
@@ -37,11 +49,11 @@ export function CookieBanner() {
   }, [consent])
 
 
-  // Fonction pour gérer le choix de l'utilisateur
   const handleConsent = (newConsent) => {
     const updatedConsent = { ...newConsent, consentedAt: new Date().toISOString() }
     saveConsent(updatedConsent)
     setConsent(updatedConsent)
+    notifyCookieConsentChange(updatedConsent)
     setShowBanner(false)
     setShowPreferences(false)
   }
@@ -64,7 +76,7 @@ export function CookieBanner() {
   `}
       </Script>
 
-       {/* Si le consentement pour analytics est activé, on charge Google Analytics */}
+       {/* If analytics consent is enabled, Google Analytics is loaded. */}
        {consent && consent.analytics && (
         <>
           <Script

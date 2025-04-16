@@ -1,22 +1,32 @@
 'use client'
 
 import { GoogleMapsEmbed } from '@next/third-parties/google'
-import { GoogleMapsIcon } from '@/public/icons/GoogleMapsIcon'
 import { getConsent } from '../CookieBanner/cookies'
 import { useEffect, useState } from 'react'
+import { CookieSettingsButton } from '../CookieSettingsButton/CookieSettingsButton'
+import { subscribeCookieConsentChange } from '../../lib/utils/cookieConsentEmitter'
+import { GoogleMapsIcon } from '@/public/icons/GoogleMapsIcon'
 import './mapGoogle.scss'
 
 export function MapGoogle() {
-  const [consent, setConsent] = useState(null)
+  const [consent, setConsent] = useState(getConsent())
 
   useEffect(() => {
-    const consentStatus = getConsent()
-    setConsent(consentStatus)
+    const unsubscribe = subscribeCookieConsentChange((newConsent) => {
+      setConsent(newConsent)
+    })
+    return () => unsubscribe()
   }, [])
 
   if (!consent || !consent.marketing) {
     return (
-      <p>Il faut accepter les cookies marketing/tiers avant de voir la carte</p>
+      <div className="no-map">
+        <GoogleMapsIcon />
+        <p>
+          Afin de voir la carte, vous devez accepter les cookies marketing/tiers:
+        </p>
+        <CookieSettingsButton />
+      </div>
     )
   }
 
