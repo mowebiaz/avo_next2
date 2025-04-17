@@ -39,7 +39,7 @@ main {
     width: 85vw;
     max-width: $max-width;
     @media screen and (min-width: $medium) {
-        margin-top: 5rem;
+        padding-top: 5rem;
     }
 }
 
