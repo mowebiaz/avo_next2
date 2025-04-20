@@ -1,26 +1,24 @@
+import { LinkAria } from '@/src/components/LinkAria/LinkAria'
+import { CookieSettingsButton } from '../../../src/components/CookieSettingsButton/CookieSettingsButton'
 import './ConfidentialityContent.scss'
 
 export function ConfidentialityContent() {
   return (
     <>
-      <p className="last-update">Dernière mise à jour : 06/02/2025</p>
+      <p className="last-update">Dernière mise à jour : 20/04/2025</p>
       <p>
-        Bienvenue sur avoriazloc.fr (ci-après &quot;le Site&quot;). La
-        protection de vos données personnelles est une priorité. Cette politique
-        de confidentialité vous informe sur la manière dont nous collectons,
-        utilisons et protégeons vos données.
+        Bienvenue sur avoriazloc.fr (ci‑après « le Site »). La protection de vos
+        données personnelles est une priorité pour nous. Cette politique de
+        confidentialité vous informe sur les traitements de données que nous
+        mettons en œuvre et sur vos droits.
       </p>
 
-      <h2>Collecte des données personnelles</h2>
-      <p>
-        Nous collectons certaines informations lorsque vous utilisez notre site,
-        notamment via les cookies.
-      </p>
+      <h2>Données collectées</h2>
 
       <h3>Données fournies volontairement</h3>
       <p>
-        Si vous utilisez un formulaire de contact, nous pouvons collecter des
-        informations telles que :
+        Lorsque vous remplissez notre formulaire de contact, nous collectons les
+        informations suivantes :
       </p>
       <ul>
         <li>Nom</li>
@@ -28,14 +26,14 @@ export function ConfidentialityContent() {
         <li>Message</li>
       </ul>
       <p>
-        Ces données ne sont utilisées que pour répondre à votre demande et ne
-        sont pas partagées avec des tiers.
+        Ces données sont utilisées uniquement pour répondre à votre demande et
+        ne sont pas partagées avec des tiers.
       </p>
 
       <h3>Données collectées automatiquement</h3>
       <p>
-        Lorsque vous naviguez sur le Site, nous collectons des données anonymes
-        via Google Analytics :
+        Nous utilisons Google Analytics pour collecter des données anonymisées
+        sur votre navigation :
       </p>
       <ul>
         <li>Pages visitées</li>
@@ -48,48 +46,79 @@ export function ConfidentialityContent() {
         utilisateur.
       </p>
 
-      <h2>Utilisation des cookies</h2>
+      <h2>Cookies et gestion des cookies</h2>
       <p>
-        Les cookies sont des fichiers stockés sur votre appareil lors de votre
-        navigation. Nous utilisons les cookies pour :
+        Les cookies sont des petits fichiers stockés sur votre appareil lors de
+        votre navigation. Nous utilisons différents types de cookies :
       </p>
       <ul>
-        <li> Améliorer l&apos;expérience utilisateur</li>
-        <li>Analyser l’audience du site (Google Analytics)</li>
+        <li>
+          <strong>Essentiels</strong> : indispensables au fonctionnement
+          technique du Site (par exemple : session, sécurité, enregistrement de
+          votre consentement).
+        </li>
+        <li>
+          <strong>Statistiques</strong> : pour mesurer l’audience et analyser
+          votre parcours (Google Analytics).
+        </li>
+        <li>
+          <strong>Marketing / Tiers</strong> : pour intégrer des services
+          externes tels que Google Maps.
+        </li>
       </ul>
+      <p>Vous pouvez gérer vos préférences à tout moment :</p>
+      <ul>
+        <li>
+          À l’aide de la bannière de consentement affichée lors de votre
+          première visite.
+        </li>
+        <li>En cliquant sur le bouton ci‑dessous pour modifier vos choix :</li>
+      </ul>
+      <CookieSettingsButton />
       <p>
-        Vous pouvez accepter ou refuser les cookies via la bannière de
-        consentement affichée lors de votre première visite.
-      </p>
-      <h3>Gestion des cookies</h3>
-      <p>
-        Vous pouvez gérer vos préférences à tout moment dans les paramètres de
-        votre navigateur : Si vous refusez les cookies, certaines
-        fonctionnalités du Site pourraient être limitées.
+        Note : Si vous refusez les cookies, certaines fonctionnalités du Site
+        (comme l’affichage de la carte) pourraient être limitées.
       </p>
 
       <h2>Google Analytics</h2>
+      <p>Nous utilisons Google Analytics pour analyser l’audience du Site.</p>
+      <ul>
+        <li>Données collectées : anonymisées via cookies.</li>
+        <li>Hébergement des données : serveurs sécurisés aux États-Unis.</li>
+        <li>Google ne partage pas ces données avec des tiers.</li>
+      </ul>
+
+      <h2>Plugins et contenus tiers </h2>
+      <h3>Google Maps</h3>
       <p>
-        Nous utilisons Google Analytics pour analyser l’audience du site. Cet
-        outil collecte des données anonymes via des cookies.
+        Pour vous aider à localiser notre studio à Avoriaz, nous intégrons une
+        carte Google Maps. Ce service est fourni et hébergé par Google Ireland
+        Limited (Gordon House, Barrow Street, Dublin 4, Irlande). Lorsque vous
+        consultez une page contenant la carte :
       </p>
       <ul>
-        <li>Google ne partage pas ces données avec des tiers.</li>
-        <li>
-          Les informations collectées sont stockées sur des serveurs aux
-          États-Unis.
-        </li>
+        <li>Votre adresse IP, vos coordonnées de localisation approximatives et d’autres données techniques (type de navigateur, données de navigation) sont transmises à Google Ireland Limited.
+
+</li>
+      <li>Ces données sont utilisées pour faire fonctionner la carte, améliorer ses performances et proposer des services de géolocalisation.</li>
       </ul>
+      <p>Pour en savoir plus sur la collecte et l’utilisation de vos données par Google :
+      <LinkAria
+        className="link"
+        href="https://policies.google.com/privacy?hl=fr"
+      >
+        https://policies.google.com/privacy
+      </LinkAria>
+      </p>
 
       <h2>Protection des données</h2>
       <p>
-        Nous mettons en place des mesures de sécurité pour protéger vos données
-        contre l&apos;accès non autorisé.
+      Nous mettons en place des mesures de sécurité techniques et organisationnelles pour protéger vos données contre tout accès non autorisé, divulgation ou altération.
       </p>
       <ul>
         <li>Aucune donnée personnelle n’est vendue ou partagée à des tiers.</li>
         <li>
-          L’accès aux données est restreint aux seules personnes nécessaires.
+        L’accès aux données est limité aux seules personnes habilitées.
         </li>
       </ul>
 
@@ -99,25 +128,21 @@ export function ConfidentialityContent() {
       </p>
       <ul>
         <li>
-          Droit d’accès : Vous pouvez demander quelles données nous détenons sur
-          vous.
+        Droit d’accès : obtenir la liste des données vous concernant.
         </li>
         <li>
-          Droit de rectification : Vous pouvez demander une correction de vos
-          informations.
+        Droit de rectification : corriger vos informations.
         </li>
         <li>
-          Droit à l’effacement : Vous pouvez demander la suppression de vos
-          données.
+        Droit à l’effacement : demander la suppression de vos données.
         </li>
         <li>
-          Droit d’opposition : Vous pouvez vous opposer à l&apos;utilisation de
-          vos données.
+        Droit d’opposition : vous opposer à un traitement spécifique.
         </li>
       </ul>
       <p>
         Vous pouvez exercer ces droits en nous contactant à l’adresse suivante:
-        mcouvet@morganeweb.com
+        contact@morganeweb.com
       </p>
 
       <h2>Modifications de la politique de confidentialité</h2>
@@ -130,7 +155,7 @@ export function ConfidentialityContent() {
       <h2>Contact</h2>
       <p>
         Pour toute question concernant cette politique de confidentialité, vous
-        pouvez nous contacter à : mcouvet@morganeweb.com
+        pouvez nous contacter à : contact@morganeweb.com
       </p>
     </>
   )
