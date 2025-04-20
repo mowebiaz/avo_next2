@@ -9,11 +9,13 @@ export async function createSeason(formData) {
     await prisma.season.create({
       data: { name },
     })
-    revalidatePath('/admin')
-    revalidatePath('/location')
   } catch (error) {
-    console.log(error)
+    return {
+      error: error.message,
+    }
   }
+  revalidatePath('/admin')
+  revalidatePath('/location')
 }
 
 export async function updateSeason(id, newTitle) {
@@ -26,9 +28,12 @@ export async function updateSeason(id, newTitle) {
     })
     revalidatePath('/admin')
     revalidatePath('/location')
+    return { success: true }
+
   } catch (error) {
-    console.log(error)
+    return {error: error.message}
   }
+
 }
 
 export async function deleteSeason(id) {
@@ -36,9 +41,10 @@ export async function deleteSeason(id) {
     await prisma.season.delete({
       where: { id },
     })
-    revalidatePath('/admin')
-    revalidatePath('/location')
+
   } catch (error) {
-    console.log(error)
+    return {error: error.message}
   }
+  revalidatePath('/admin')
+  revalidatePath('/location')
 }

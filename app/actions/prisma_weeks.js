@@ -21,12 +21,13 @@ export async function createWeek(data, season) {
         }
       }),
     })
-
-    revalidatePath('/admin')
-    revalidatePath('/location')
   } catch (error) {
-    console.log(error)
+    return {
+      error: error.message,
+    }
   }
+  revalidatePath('/admin')
+  revalidatePath('/location')
 }
 
 export async function checkIfWeekExists(entryDate) {
@@ -52,11 +53,11 @@ export async function updateDisponibility(weekId, disponibility) {
         disponibility,
       },
     })
-    revalidatePath('/admin')
-    revalidatePath('/location')
   } catch (error) {
-    console.log(error)
+    return { error: error.message }
   }
+  revalidatePath('/admin')
+  revalidatePath('/location')
 }
 
 export async function deleteWeek(weekId) {
@@ -66,11 +67,10 @@ export async function deleteWeek(weekId) {
         id: weekId,
       },
     })
-    revalidatePath('/admin')
-    revalidatePath('/location')
+
   } catch (error) {
-    console.log(error)
+    return { error: error.message }
   }
+  revalidatePath('/admin')
+  revalidatePath('/location')
 }
-
-

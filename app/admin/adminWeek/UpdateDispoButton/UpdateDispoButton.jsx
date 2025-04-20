@@ -1,11 +1,17 @@
 'use client'
 
 import { updateDisponibility } from '@/app/actions/prisma_weeks'
+import { toast } from 'sonner'
 import './UpdateDispoButton.scss'
 
 export function UpdateDispoButton({ week, isChecked }) {
   const handleCheck = async () => {
-    await updateDisponibility(week.id, !isChecked)
+    const result = await updateDisponibility(week.id, !isChecked)
+    if (result?.error) {
+      toast.error(result.error)
+    } else {
+      toast.success('Dispo mise à jour')
+    }
   } 
 
   return (

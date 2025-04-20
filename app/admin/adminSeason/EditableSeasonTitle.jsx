@@ -1,8 +1,9 @@
 'use client'
 
 import { useState, useTransition } from 'react'
-import { FaRegPenToSquare } from 'react-icons/fa6'
 import { updateSeason } from '../../actions/prisma_seasons'
+import { toast } from 'sonner'
+import { FaRegPenToSquare } from 'react-icons/fa6'
 
 export function EditableSeasonTitle({ seasonId, initialTitle }) {
   const [title, setTitle] = useState(initialTitle)
@@ -11,17 +12,23 @@ export function EditableSeasonTitle({ seasonId, initialTitle }) {
   const [isPending, startTransition] = useTransition()
 
   const handleBlur = () => {
-    if (tempTitle !== title) {
-      startTransition(async () => {
-        try {
-          await updateSeason(seasonId, tempTitle)
-          setTitle(tempTitle)
-        } catch (err) {
-          console.error(err)
-          setTempTitle(title) // rollback
-        }
-      })
+    if (tempTitle === title) {
+      setIsEditing(false)
+      return
     }
+
+    startTransition(async () => {
+      const result = await updateSeason(seasonId, tempTitle)
+
+      if (result?.error) {
+        toast.error(result.error)
+        setTempTitle(title) // rollback
+      } else {
+        setTitle(tempTitle)
+        toast.success('Titre mis à jour !')
+      }
+    })
+
     setIsEditing(false)
   }
 

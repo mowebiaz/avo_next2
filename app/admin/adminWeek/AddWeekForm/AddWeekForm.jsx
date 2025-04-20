@@ -2,9 +2,10 @@
 
 import { useRef } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
-import { UserMessage } from '@/src/components/UserMessage/UserMessage'
-import { IoMdAddCircle } from 'react-icons/io'
 import { checkIfWeekExists, createWeek } from '@/app/actions/prisma_weeks'
+import { UserMessage } from '@/src/components/UserMessage/UserMessage'
+import { toast } from 'sonner';
+import { IoMdAddCircle } from 'react-icons/io'
 import './AddWeekForm.scss'
 
 export function AddWeekForm({ season }) {
@@ -34,9 +35,13 @@ export function AddWeekForm({ season }) {
     name: 'newWeek',
   })
 
-  const onSubmit = (data) => {
-    createWeek(data, season)
-    //alert('semaine(s) ajoutée(s)')
+  const onSubmit = async (data) => {
+    const result = await createWeek(data, season)
+    if (result?.error) {
+      toast.error(result.error)
+    } else {
+      toast.success('Semaine(s) ajoutée(s)')
+    }
     reset()
     formRef.current.style.display = 'none'
     btnFormRef.current.style.display = 'flex'
