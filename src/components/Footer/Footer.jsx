@@ -1,5 +1,6 @@
 'use client'
 
+import { useSession } from 'next-auth/react'
 import { ButtonLink } from '../ButtonLink/ButtonLink'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { LinkAria } from '../LinkAria/LinkAria'
@@ -7,6 +8,7 @@ import { Link } from 'react-aria-components'
 import './Footer.scss'
 
 export function Footer() {
+  const { data: session } = useSession()
   return (
     <footer>
       <div className="footer-text">
@@ -38,7 +40,8 @@ export function Footer() {
           </Link>
         </p>
       </div>
-      {/*  {user ? (
+
+      {session?.user ? (
         <Link
           className="link-admin"
           href="/admin"
@@ -54,7 +57,7 @@ export function Footer() {
         >
           <FaRegUserCircle />
         </ButtonLink>
-      )} */}
+      )}
     </footer>
   )
 }

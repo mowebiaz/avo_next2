@@ -1,6 +1,15 @@
 @use '@/src/styles/variables' as *;
 @use 'sass:color';
 
+.admin {
+  .form-logout {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-top: 40px;
+  }
+}
+
 .button-logout {
   display: flex;
   align-items: center;

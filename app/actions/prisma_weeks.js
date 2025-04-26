@@ -2,8 +2,17 @@
 
 import { prisma } from '@/src/lib/prisma'
 import { revalidatePath } from 'next/cache'
+import { auth } from '@/auth'
+
 
 export async function createWeek(data, season) {
+  const session = await auth()
+  if (!session?.user?.email || session.user.email !== process.env.ADMIN_EMAIL) {
+    return {
+      error: 'Vous devez être connecté pour créer une saison',
+    }
+  }
+
   const weeksList = data.newWeek
 
   try {
@@ -27,7 +36,6 @@ export async function createWeek(data, season) {
     }
   }
   revalidatePath('/admin')
-  revalidatePath('/location')
 }
 
 export async function checkIfWeekExists(entryDate) {
@@ -44,6 +52,13 @@ export async function checkIfWeekExists(entryDate) {
 }
 
 export async function updateDisponibility(weekId, disponibility) {
+  const session = await auth()
+  if (!session?.user?.email || session.user.email !== process.env.ADMIN_EMAIL) {
+    return {
+      error: 'Vous devez être connecté pour créer une saison',
+    }
+  }
+  
   try {
     await prisma.week.update({
       where: {
@@ -57,10 +72,16 @@ export async function updateDisponibility(weekId, disponibility) {
     return { error: error.message }
   }
   revalidatePath('/admin')
-  revalidatePath('/location')
 }
 
 export async function deleteWeek(weekId) {
+  const session = await auth()
+  if (!session?.user?.email || session.user.email !== process.env.ADMIN_EMAIL) {
+    return {
+      error: 'Vous devez être connecté pour créer une saison',
+    }
+  }
+  
   try {
     await prisma.week.delete({
       where: {
@@ -72,5 +93,4 @@ export async function deleteWeek(weekId) {
     return { error: error.message }
   }
   revalidatePath('/admin')
-  revalidatePath('/location')
 }

@@ -2,6 +2,7 @@ import { Header } from '@/src/components/Header/Header'
 import { Footer } from '@/src/components/Footer/Footer'
 import { ReactAriaRouter } from '@/src/context/ReactAriaRouter'
 import { CookieBanner } from '@/src/components/CookieBanner/CookieBanner'
+import { SessionProvider } from 'next-auth/react'
 import { Toaster } from 'sonner'
 import { merienda, raleway } from '@/src/styles/fonts'
 import '@/src/styles/globals.scss'
@@ -27,12 +28,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <body className={`${merienda.variable} ${raleway.variable}`}>
+        <SessionProvider>
         <ReactAriaRouter>
           <Header />
           {children}
           <Footer />
           <CookieBanner />
         </ReactAriaRouter>
+        </SessionProvider>
         <Toaster />
       </body>
     </html>
