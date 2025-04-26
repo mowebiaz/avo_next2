@@ -27,21 +27,22 @@ export function ContactForm() {
     reset()
   }
 
-
-
-  const onSubmit = async () => {
+  const onSubmit = async (data) => {
     try {
-/*       await emailjs.sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      ) */
-      openDialog()
-
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      if (res.ok) {
+        openDialog()
+      } else {
+        throw new Error('Une erreur est survenue')
+      }
     } catch (error) {
       openDialog()
-
     }
   }
 
@@ -69,7 +70,7 @@ export function ContactForm() {
           <label htmlFor="email">Email *</label>
           <input
             type="email"
-            name="reply_to"
+            name="email"
             id="email"
             autoComplete="email"
             {...register('email', {
@@ -122,24 +123,34 @@ export function ContactForm() {
               </Link>
             </label>
           </div>
-            {errors.accepted && (
-              <p className="message-error">{errors.accepted.message}</p>
-            )}
+          {errors.accepted && (
+            <p className="message-error">{errors.accepted.message}</p>
+          )}
         </div>
         <button
           type="submit"
           disabled={isSubmitting}
         >
-          {isSubmitting ? <Loader/> : 'Envoyer'}
+          {isSubmitting ? <Loader /> : 'Envoyer'}
         </button>
-      <dialog ref={dialogRef} className='contact-dialog'>
-        {isSubmitSuccessful ? (
-          <p>Merci pour votre message. Nous vous répondrons dès que possible.</p>
-        ) : (
-          <p>Une erreur est survenue.</p>
-        )}
-        <button type='button' onClick={closeDialog}><IoMdCloseCircle/></button>
-      </dialog>
+        <dialog
+          ref={dialogRef}
+          className="contact-dialog"
+        >
+          {isSubmitSuccessful ? (
+            <p>
+              Merci pour votre message. Nous vous répondrons dès que possible.
+            </p>
+          ) : (
+            <p>Une erreur est survenue.</p>
+          )}
+          <button
+            type="button"
+            onClick={closeDialog}
+          >
+            <IoMdCloseCircle />
+          </button>
+        </dialog>
       </form>
     </>
   )
