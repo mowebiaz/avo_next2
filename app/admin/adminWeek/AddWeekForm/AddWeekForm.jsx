@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { checkIfWeekExists, createWeek } from '@/app/actions/prisma_weeks'
 import { UserMessage } from '@/src/components/UserMessage/UserMessage'
-import { toast } from 'sonner';
+import { toast } from 'sonner'
 import { IoMdAddCircle } from 'react-icons/io'
 import './AddWeekForm.scss'
 
@@ -23,11 +23,13 @@ export function AddWeekForm({ season }) {
     register,
     reset,
     trigger,
+    setError,
     formState: { errors, isSubtmitting },
   } = useForm({
     defaultValues: {
       newWeek: [{ entryDate: '', price: '', disponibility: false }],
     },
+    mode: 'onTouched',
   })
 
   const { fields, append } = useFieldArray({
@@ -36,6 +38,23 @@ export function AddWeekForm({ season }) {
   })
 
   const onSubmit = async (data) => {
+    // checks if there are any duplicate dates in the form.
+    const dates = data.newWeek.map((w) => w.entryDate)
+    const dupes = dates
+      .filter((d, i, arr) => d && arr.indexOf(d) !== i)
+      .filter((d, i, arr) => arr.indexOf(d) === i) // unique
+    if (dupes.length) {
+      data.newWeek.forEach((w, i) => {
+        if (dupes.includes(w.entryDate)) {
+          setError(`newWeek.${i}.entryDate`, {
+            type: 'manual',
+            message: 'Date en double dans le formulaire',
+          })
+        }
+      })
+      return
+    }
+
     const result = await createWeek(data, season)
     if (result?.error) {
       console.log(result.error)
@@ -53,7 +72,7 @@ export function AddWeekForm({ season }) {
       <div ref={btnFormRef}>
         <button
           className="btn-addweek"
-          ref={btnFormRef}
+          //ref={btnFormRef}
           onClick={handleClick}
         >
           Ajouter une semaine
@@ -127,9 +146,11 @@ export function AddWeekForm({ season }) {
             className="btn-add"
             disabled={isSubtmitting}
             onClick={async () => {
-              const isValid = await trigger()
-              if (isValid) {
+              const valid = await trigger()
+              if (valid) {
                 append({ entryDate: '', price: '', disponibility: false })
+              } else {
+                toast.error("Vous n'avez pas rempli correctement le formulaire")
               }
             }}
           >
