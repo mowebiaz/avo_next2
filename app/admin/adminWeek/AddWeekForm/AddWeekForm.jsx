@@ -38,6 +38,7 @@ export function AddWeekForm({ season }) {
   const onSubmit = async (data) => {
     const result = await createWeek(data, season)
     if (result?.error) {
+      console.log(result.error)
       toast.error(result.error)
     } else {
       toast.success('Semaine(s) ajoutée(s)')

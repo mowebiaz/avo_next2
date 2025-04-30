@@ -8,6 +8,7 @@ export function UpdateDispoButton({ week, isChecked }) {
   const handleCheck = async () => {
     const result = await updateDisponibility(week.id, !isChecked)
     if (result?.error) {
+      console.log(result.error)
       toast.error(result.error)
     } else {
       toast.success('Dispo mise à jour')

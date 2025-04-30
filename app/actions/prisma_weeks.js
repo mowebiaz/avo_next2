@@ -9,7 +9,7 @@ export async function createWeek(data, season) {
   const session = await auth()
   if (!session?.user?.email || session.user.email !== process.env.ADMIN_EMAIL) {
     return {
-      error: 'Vous devez être connecté pour créer une saison',
+      error: 'Vous devez être connecté pour ajouter une semaine',
     }
   }
 
@@ -55,7 +55,7 @@ export async function updateDisponibility(weekId, disponibility) {
   const session = await auth()
   if (!session?.user?.email || session.user.email !== process.env.ADMIN_EMAIL) {
     return {
-      error: 'Vous devez être connecté pour créer une saison',
+      error: 'Vous devez être connecté pour modifier une dispo',
     }
   }
   
@@ -78,7 +78,7 @@ export async function deleteWeek(weekId) {
   const session = await auth()
   if (!session?.user?.email || session.user.email !== process.env.ADMIN_EMAIL) {
     return {
-      error: 'Vous devez être connecté pour créer une saison',
+      error: 'Vous devez être connecté pour suprrimer une semaine',
     }
   }
   

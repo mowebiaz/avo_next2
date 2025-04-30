@@ -25,7 +25,7 @@ model Week {
   exitDate      DateTime
   price         Int
   disponibility Boolean  @default(true)
-  Season        Season   @relation(fields: [seasonId], references: [id])
+  Season        Season   @relation(fields: [seasonId], references: [id], onDelete: Cascade)
   seasonId      String
 }
 

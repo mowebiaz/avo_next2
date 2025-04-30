@@ -8,6 +8,7 @@ export function DeleteWeekButton({week})  {
 const handleClick = async () => {
   const result = await deleteWeek(week)
   if (result?.error) {
+    console.log(result.error)
     toast.error(result.error)
   } else {
     toast.success('Semaine supprimée')

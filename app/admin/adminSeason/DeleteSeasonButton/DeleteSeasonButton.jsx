@@ -12,6 +12,7 @@ export function DeleteSeasonButton({ season }) {
   const handleClick = async () => {
     const result = await deleteSeason(season.id)
     if (result?.error) {
+      console.log(result.error)
       toast.error(result.error)
     } else {
       toast.success('Saison supprimée')
