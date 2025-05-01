@@ -36,6 +36,7 @@ export async function createWeek(data, season) {
     }
   }
   revalidatePath('/admin')
+  revalidatePath('/location')
 }
 
 export async function checkIfWeekExists(entryDate) {
@@ -72,6 +73,7 @@ export async function updateDisponibility(weekId, disponibility) {
     return { error: error.message }
   }
   revalidatePath('/admin')
+  revalidatePath('/location')
 }
 
 export async function deleteWeek(weekId) {
@@ -93,4 +95,5 @@ export async function deleteWeek(weekId) {
     return { error: error.message }
   }
   revalidatePath('/admin')
+  revalidatePath('/location')
 }

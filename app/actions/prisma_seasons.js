@@ -24,6 +24,7 @@ export async function createSeason(formData) {
     }
   }
   revalidatePath('/admin')
+  revalidatePath('/location')
 }
 
 export async function updateSeason(id, newTitle) {
@@ -42,6 +43,7 @@ export async function updateSeason(id, newTitle) {
       },
     })
     revalidatePath('/admin')
+    revalidatePath('/location')
     return { success: true }
   } catch (error) {
     return { error: error.message }
@@ -64,4 +66,5 @@ export async function deleteSeason(id) {
     return { error: error.message }
   }
   revalidatePath('/admin')
+  revalidatePath('/location')
 }
