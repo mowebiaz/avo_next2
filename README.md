@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AvoriazLoc - Studio Rental Management in Avoriaz
 
-## Getting Started
+This project is a web application built with [Next.js](https://nextjs.org) to manage the rental of a studio in Avoriaz.
+It includes features such as availability management, pricing, and practical information for visitors.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Week Management**: Add, update, and delete rental weeks or seasons using Prisma.
+- **Authentication**: User authentication and admin rights verification.
+- **Informative Pages**: Access, station, studio, useful links, privacy policy, legal notices.
+- **Contact Form**: Allows users to ask questions or request information.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: [Next.js](https://nextjs.org)
+- **ORM**: [Prisma](https://www.prisma.io)
+- **Database**: PostgreSQL
+- **Authentication**: [Auth.js](https://authjs.dev/)
+- **UI**: React Aria and SCSS
+- **Deployment**: [Vercel](https://vercel.com)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+1. Clone the repository:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   git clone https://github.com/mowebiaz/avo_next2.git
+   cd avo_next2_app
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Install dependencies:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+3. Configure environment variables in a .env file:
 
+   ```bash
+   DATABASE_URL
+   ADMIN_EMAIL
+   RESEND_API_KEY
+   NEXT_PUBLIC_MAPS_API_KEY
+   AUTH_SECRET
+   AUTH_GOOGLE_ID
+   AUTH_GOOGLE_SECRET
+   ```
+
+4. Generate the Prisma client and apply migrations:
+
+   ```bash
+   npx prisma generate
+   npx prisma migrate deploy
+   ```
+
+5. Start the development server:
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
+
+6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Deployment
+
+The project is designed to be deployed on Vercel.
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contribution
+
+Contributions are welcome!
+
+

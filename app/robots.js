@@ -3,7 +3,7 @@ export default function robots() {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/login/', '/admin/']
+      disallow: ['/login/', '/admin/', '/mentions-legales', '/politique-de-confidentialite']
     },
     sitemap: 'https://avoriazloc.fr/sitemap.xml',
   }

@@ -75,6 +75,7 @@ export function StationContent() {
             placeholder="blur"
             width={795}
             height={450}
+            quality={100}
             priority
             sizes="(max-width: 920px) 80vw, (max-width: 1440px) 40vw, 566px"
           />
@@ -87,6 +88,7 @@ export function StationContent() {
             placeholder="blur"
             width={943}
             height={450}
+            quality={100}
             priority
             sizes="(max-width: 920px) 80vw, (max-width: 1440px) 40vw, 566px"
           />
