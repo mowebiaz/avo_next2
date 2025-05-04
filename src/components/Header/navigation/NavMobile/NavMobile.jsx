@@ -7,6 +7,7 @@ import { ActiveLink } from '../NavDestkop/ActiveLink/ActiveLink'
 import { useClickAway } from 'react-use'
 import { FaSnowflake } from 'react-icons/fa6'
 import './NavMobile.scss'
+import { AnimatePresence, motion } from 'motion/react'
 
 export function NavMobile() {
   const [isOpen, setIsOpen] = useState(false)
@@ -35,42 +36,48 @@ export function NavMobile() {
         <span className="sr-only">Menu</span>
         <BurgerIcon isOpen={isOpen} />
       </button>
-      {isOpen && (
-        <nav
-          className="nav-mobile"
-          id="navigation"
-          aria-label="Menu"
-        >
-          <ul>
-            <li
-              key="Home"
-              onClick={toggleMenu}
-            >
-              <ActiveLink
-                href="/"
-                activeClassName="active"
-              >
-                <FaSnowflake />
-                Accueil
-              </ActiveLink>
-            </li>
-            {routeList.map(({ name, path, icon }) => (
+      <AnimatePresence>
+        {isOpen && (
+          <motion.nav
+            className="nav-mobile"
+            id="navigation"
+            aria-label="Menu"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            <ul>
               <li
-                key={name}
+                key="Home"
                 onClick={toggleMenu}
               >
                 <ActiveLink
-                  href={path}
+                  href="/"
                   activeClassName="active"
                 >
-                  {icon}
-                  {name}
+                  <FaSnowflake />
+                  Accueil
                 </ActiveLink>
               </li>
-            ))}
-          </ul>
-        </nav>
-      )}
+              {routeList.map(({ name, path, icon }) => (
+                <li
+                  key={name}
+                  onClick={toggleMenu}
+                >
+                  <ActiveLink
+                    href={path}
+                    activeClassName="active"
+                  >
+                    {icon}
+                    {name}
+                  </ActiveLink>
+                </li>
+              ))}
+            </ul>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
