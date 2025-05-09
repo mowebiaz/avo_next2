@@ -19,19 +19,21 @@ export function Carousel({ images, index, setIndex }) {
         src={images[index].src}
         alt={images[index].alt}
         quality={100}
-        /*          width={images[index].width}
-        height={images[index].height}  */
       />
       <div className="buttons">
         <button
           className="prev"
           onClick={prev}
+          aria-label="Previous image"
+          aria-controls="carousel"
         >
           <MdNavigateBefore />
         </button>
         <button
           className="next"
           onClick={next}
+          aria-label="Next image"
+          aria-controls="carousel"
         >
           <MdNavigateNext />
         </button>
@@ -42,6 +44,8 @@ export function Carousel({ images, index, setIndex }) {
             key={i}
             className={index === i ? 'active' : ''}
             onClick={() => setIndex(i)}
+            aria-label={`Image ${i + 1}`}
+            role="button"
           />
         ))}
       </div>

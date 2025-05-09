@@ -228,6 +228,7 @@ export function AccesContent() {
               href={"https://www.parkingmorzine.com/reservation-parking-prodains.php"}
               target="_blank"
               referrerPolicy='no-opener no-referrer'
+              aria-label="Réserver le parking des Prodains"
             >
               Réserver
             </LinkAria>
@@ -240,6 +241,7 @@ export function AccesContent() {
               href={"https://www.avoriazparkings.com/reservation-parking.html"}
               target="_blank"
               referrerPolicy='no-opener no-referrer'
+              aria-label="Réserver le parking couvert"
             >
               Réserver
             </LinkAria>

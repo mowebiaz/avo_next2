@@ -147,6 +147,7 @@ export function ContactForm() {
           <button
             type="button"
             onClick={closeDialog}
+            aria-label='Close'
           >
             <IoMdCloseCircle />
           </button>
