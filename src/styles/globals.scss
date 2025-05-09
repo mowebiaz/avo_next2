@@ -44,8 +44,8 @@ main {
 }
 
 h1 {
-    font-family: var(--font-merienda), 'Brush Script MT', 'Comic Sans MS',
-        cursive;
+    font-family:
+        var(--font-merienda), 'Brush Script MT', 'Comic Sans MS', cursive;
     text-align: center;
     font-size: clamp(1.6rem, 1.369rem + 0.985vw, 2rem);
     text-wrap: balance;

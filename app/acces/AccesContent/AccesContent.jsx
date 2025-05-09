@@ -91,7 +91,7 @@ export function AccesContent() {
                 <td colSpan={2}>
                   <span>
                     Rotation en continu jusqu&apos;à 19h30. Interruption entre
-                    19h30 et 19h55, puis rotation toutes les 20 minutes.
+                    19h30 et 20h00, puis rotation toutes les 20 minutes.
                     <br />
                   </span>
                 </td>

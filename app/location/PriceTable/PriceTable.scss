@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    .legend-item{
+    .legend-item {
         display: flex;
         align-items: center;
         gap: 0.2rem;
@@ -17,7 +17,6 @@
             border: 1px solid $footer-color;
             &.booked {
                 background-color: hsl(0, 0%, 65%);
-
             }
         }
     }
@@ -41,7 +40,6 @@ table.price-table {
         tr {
             &.booked {
                 background-color: hsl(0, 0%, 65%);
-                font-style: italic;
             }
         }
 

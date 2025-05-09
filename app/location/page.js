@@ -3,7 +3,8 @@ import { LocationContent } from './LocationContent/LocationContent'
 export const metadata = {
   title: 'Location',
   description:
-    'Les tarifs et disponibilités de notre studio à louer à Avoriaz. Idéalement situé au pied des pistes, ce studio est parfait pour vos vacances à la montagne.',
+    'Les tarifs et disponibilités de notre studio à Avoriaz. Accédez à des informations pratiques pour faciliter votre séjour en toute sérénité.',
+    
   alternates: {
     canonical: 'https://avoriazloc.fr/location',
   },

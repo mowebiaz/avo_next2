@@ -14,7 +14,7 @@ export function ButtonsContainer() {
         href="#station"
         className="button-link-aria"
       >
-        Acces station
+        Accès station
       </LinkAria>
     </div>
   )

@@ -13,7 +13,7 @@ export const metadata = {
     default: 'AvoriazLoc', // a default is required when creating a template
   },
   description:
-    'Location de studio à Avoriaz - Studio confortable au pied des pistes',
+    'Découvrez notre studio à louer à Avoriaz, idéal pour vos vacances en montagne. Vue imprenable et accès direct aux pistes vous attendent !',
   openGraph: {
     type: 'website',
     siteName: 'AvoriazLoc',

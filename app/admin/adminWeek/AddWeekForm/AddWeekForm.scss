@@ -13,7 +13,6 @@
             background-color: $primary-color;
             color: $footer-color;
         }
-
     }
 
     .form-addWeek {
@@ -39,7 +38,6 @@
             .new-week {
                 display: flex;
                 width: 100%;
-                /*justify-content: space-between;*/
                 justify-content: center;
                 flex-wrap: wrap;
                 border-radius: 10px;
@@ -53,7 +51,6 @@
                     padding: 0.5rem;
                     border: 1px solid $footer-color;
                     border-radius: 10px;
-                    /*height: 100%;*/
                     width: 100%;
                     input {
                         padding: 0.2rem;

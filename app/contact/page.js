@@ -3,7 +3,7 @@ import { ContactForm } from './ContactForm/ContactForm'
 export const metadata = {
   title: 'Contact',
   description:
-    'Contactez-nous pour toute question à propos de notre studio à Avoriaz',
+    "Besoin d'informations sur notre studio à louer à Avoriaz ? Remplissez notre formulaire de contact et nous vous répondrons rapidement.",
   alternates: {
     canonical: 'https://avoriazloc.fr/contact',
   },

@@ -10,13 +10,7 @@ export async function POST(request) {
     await resend.emails.send({
       from: 'AvoriazLoc <avo@email.avoriazloc.fr>',
       to: 'morgane.couvet@gmail.com',
-      subject: `Nouveau message de ${name}`,
-      //reply_to: `${email}`,
-      //reply_to: email,
-/*       replyTo: {
-        name: name,
-        email: email,
-      }, */
+      subject: `Nouveau message de ${name} sur avoriazloc.fr`,
       replyTo: email,
       
       html: `

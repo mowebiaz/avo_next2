@@ -1,12 +1,14 @@
-import { ButtonsContainer } from "@/app/acces/ButtonsContainer/ButtonsContainer"
-import { AccesContent } from "@/app/acces/AccesContent/AccesContent"
+import { ButtonsContainer } from '@/app/acces/ButtonsContainer/ButtonsContainer'
+import { AccesContent } from '@/app/acces/AccesContent/AccesContent'
 
 export const metadata = {
-  title: "Accès",
-  description: "Comment accéder au studio à Avoriaz et à la station. Trouvez les informations pour venir en voiture, train, ou bus.",
+  title: 'Accès',
+  description:
+    'Comment accéder au studio et à Avoriaz. Informations sur les transports, carte, horaires des téléphériques et parkings disponibles',
+
   alternates: {
     canonical: 'https://avoriazloc.fr/acces',
-  }
+  },
 }
 
 export default function Acces() {

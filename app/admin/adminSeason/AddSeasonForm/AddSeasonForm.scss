@@ -47,6 +47,9 @@
             display: inline-flex;
             align-self: center;
             width: fit-content;
+            @media screen and (max-width: 425px) {
+                font-size: 1rem;
+            }
             &:hover {
                 background-color: $primary-color;
                 color: $footer-color;
