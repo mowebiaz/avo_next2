@@ -24,17 +24,28 @@ export const metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'http://schema.org/',
+  '@type': 'WebSite',
+  url: 'https://avoriazloc.fr',
+  name: 'AvoriazLoc',
+}
+
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <body className={`${merienda.variable} ${raleway.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <SessionProvider>
-        <ReactAriaRouter>
-          <Header />
-          {children}
-          <Footer />
-          <CookieBanner />
-        </ReactAriaRouter>
+          <ReactAriaRouter>
+            <Header />
+            {children}
+            <Footer />
+            <CookieBanner />
+          </ReactAriaRouter>
         </SessionProvider>
         <Toaster />
       </body>
