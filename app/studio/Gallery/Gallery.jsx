@@ -62,6 +62,7 @@ export function Gallery({ images }) {
         <button
           className="btn-close"
           onClick={closeDialog}
+          aria-label="Close"
         >
           <IoMdCloseCircle />
         </button>

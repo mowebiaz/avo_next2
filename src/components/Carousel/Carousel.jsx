@@ -44,8 +44,6 @@ export function Carousel({ images, index, setIndex }) {
             key={i}
             className={index === i ? 'active' : ''}
             onClick={() => setIndex(i)}
-            aria-label={`Image ${i + 1}`}
-            role="button"
           />
         ))}
       </div>
