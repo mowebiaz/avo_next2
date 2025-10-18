@@ -9,6 +9,7 @@ It includes features such as availability management, pricing, and practical inf
 - **Authentication**: User authentication and admin rights verification.
 - **Informative Pages**: Access, station, studio, useful links, privacy policy, legal notices.
 - **Contact Form**: Allows users to ask questions or request information.
+- **Cookie Banner**: Manage cookie preferences for a better user experience.
 
 ## Technologies Used
 
@@ -16,6 +17,7 @@ It includes features such as availability management, pricing, and practical inf
 - **ORM**: [Prisma](https://www.prisma.io)
 - **Database**: PostgreSQL
 - **Authentication**: [Auth.js](https://authjs.dev/)
+- **Email**: [Resend](https://resend.com/)
 - **UI**: React Aria and SCSS
 - **Deployment**: [Vercel](https://vercel.com)
 
