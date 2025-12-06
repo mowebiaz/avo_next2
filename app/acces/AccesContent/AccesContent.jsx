@@ -1,4 +1,4 @@
-import  {MapGoogle}  from '@/src/components/mapGoogle/mapGoogle'
+import { MapGoogle } from '@/src/components/mapGoogle/mapGoogle'
 import { LinkAria } from '@/src/components/LinkAria/LinkAria'
 import { TitleWithIcon } from '@/src/components/TitleWithIcon/TitleWithIcon'
 import { FaCar, FaPlaneDeparture } from 'react-icons/fa'
@@ -18,16 +18,20 @@ export function AccesContent() {
       <section>
         <h2 id="studio">Accéder au studio</h2>
         <p>
-          Notre studio se trouve dans la résidence Pas du Lac (n°41 sur le 
+          Notre studio se trouve dans la résidence Pas du Lac (n°41 sur le
           <LinkAria
             className="link"
-            href={'https://www.avoriaz.com/decouvrir/plans--guide/plan-station-avoriaz/#plan-hiver'}
+            href={
+              'https://www.avoriaz.com/decouvrir/plans--guide/plan-station-avoriaz/#plan-hiver'
+            }
             target="_blank"
             referrerPolicy="no-opener no-referrer"
           >
-            plan de la station</LinkAria>).
+            plan de la station
+          </LinkAria>
+          ).
         </p>
-        <MapGoogle/>
+        <MapGoogle />
 
         <p>
           Avoriaz étant une station sans voiture, vous devrez vous garer et
@@ -116,31 +120,34 @@ export function AccesContent() {
               </tr>
               <tr>
                 <td>
-                  Adulte<sup>(1)</sup>
-                </td>
-                <td>8,60</td>
-                <td>13,80</td>
-              </tr>
-              <tr>
-                <td>
                   Enfant<sup>(2)</sup>
                 </td>
-                <td>6,20</td>
-                <td>10,00</td>
+                <td>6,40</td>
+                <td>10,30</td>
               </tr>
+
               <tr>
                 <td>
-                  Jeunes<sup>(3)</sup>
+                  Junior<sup>(3)</sup>
                 </td>
-                <td>7,70</td>
-                <td>12.40</td>
+                <td>8,00</td>
+                <td>12,80</td>
               </tr>
+
+              <tr>
+                <td>
+                  Adulte<sup>(1)</sup>
+                </td>
+                <td>8,90</td>
+                <td>14,20</td>
+              </tr>
+
               <tr>
                 <td>
                   Sénior<sup>(4)</sup>
                 </td>
-                <td>7,70</td>
-                <td>12.40</td>
+                <td>8,00</td>
+                <td>12.80</td>
               </tr>
             </tbody>
           </table>
@@ -189,19 +196,23 @@ export function AccesContent() {
                 <td>
                   Pour tous<sup>(1),(2),(3),(4)</sup>
                 </td>
-                <td>6,70</td>
-                <td>7,80</td>
+                <td>6,80</td>
+                <td>7,90</td>
               </tr>
-
             </tbody>
           </table>
         </div>
-          <div className='table-definition'>
-            <p>(1) Adulte: de 26 à 64 ans -  
-            (2) Enfant: de 5 à 15 ans - 
-            (3) Jeune: de 16 à 25 ans - 
-            (4) Sénior: 65 ans et plus</p>
-          </div>
+        <div className="table-definition">
+          <p>
+            (1) Adulte: de 26 à 64 ans - (2) Enfant: de 5 à 16 ans - (3) Junior:
+            de 16 à 25 ans - (4) Sénior: de 65 ans et plus
+          </p>
+          <p>
+            Carte main-libre obligatoire (3€). Gratuit pour les enfants de moins
+            de 5 ans (forfait à retirer uniquement en caisse avec un
+            justificatif)
+          </p>
+        </div>
 
         <TitleWithIcon
           title={<h3>Arrivée par l&apos;accueil station</h3>}
@@ -222,25 +233,30 @@ export function AccesContent() {
         <p>En hiver:</p>
         <ul>
           <li>
-            Parking des Prodains: 208€ la semaine.{' '}
+            Parking des Prodains: 182€ la semaine. Pas de réservation.
+            <br />
+            🚨 Attention, Morzine change (encore) sa manière de fonctionner
+            concernant ses parkings:
             <LinkAria
               className="link"
-              href={"https://www.parkingmorzine.com/reservation-parking-prodains.php"}
+              href={
+                'https://www.mairie-morzine-avoriaz.com/decouverte/circuler-stationner-morzine/'
+              }
               target="_blank"
-              referrerPolicy='no-opener no-referrer'
-              aria-label="Réserver le parking des Prodains"
+              referrerPolicy="no-opener no-referrer"
             >
-              Réserver
+              plus d'info
             </LinkAria>
+            .
           </li>
           <li>
             Parkings couverts: 100€ la semaine. Pas de réservation à moins de 3
             jours de l&apos;arrivée.{' '}
             <LinkAria
               className="link"
-              href={"https://www.avoriazparkings.com/reservation-parking.html"}
+              href={'https://www.avoriazparkings.com/reservation-parking.html'}
               target="_blank"
-              referrerPolicy='no-opener no-referrer'
+              referrerPolicy="no-opener no-referrer"
               aria-label="Réserver le parking couvert"
             >
               Réserver
@@ -250,9 +266,11 @@ export function AccesContent() {
             Parking extérieur: 80€ la semaine. Pas de réservation.{' '}
             <LinkAria
               className="link"
-              href={"https://www.avoriazparkings.com/parking-exterieur-avoriaz.html"}
+              href={
+                'https://www.avoriazparkings.com/parking-exterieur-avoriaz.html'
+              }
               target="_blank"
-              referrerPolicy='no-opener no-referrer'
+              referrerPolicy="no-opener no-referrer"
             >
               Voir
             </LinkAria>
@@ -291,9 +309,11 @@ export function AccesContent() {
           Gares TGV de Cluses, de Thonon les Bains ou{' '}
           <LinkAria
             className="link"
-            href={"https://www.sbb.ch/fr/informations-voyages/gares/trouver-gare/gare-de-geneve-cornavin.html"}
+            href={
+              'https://www.sbb.ch/fr/informations-voyages/gares/trouver-gare/gare-de-geneve-cornavin.html'
+            }
             target="_blank"
-            referrerPolicy='no-opener no-referrer'
+            referrerPolicy="no-opener no-referrer"
           >
             gare internationale de Genève
           </LinkAria>
@@ -317,9 +337,9 @@ export function AccesContent() {
           de l’
           <LinkAria
             className="link"
-            href={"https://www.gva.ch/fr/"}
+            href={'https://www.gva.ch/fr/'}
             target="_blank"
-            referrerPolicy='no-opener no-referrer'
+            referrerPolicy="no-opener no-referrer"
           >
             aéroport international de Genève
           </LinkAria>{' '}

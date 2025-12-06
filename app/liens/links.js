@@ -106,9 +106,4 @@ export const links = [
     link: 'https://www.avoriazparkings.com/',
     category: 'trajets',
   },
-  {
-    name: 'Parking - bas',
-    link: 'https://www.parkingmorzine.com/reservation-parking-prodains.php',
-    category: 'trajets',
-  },
 ]
