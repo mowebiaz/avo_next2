@@ -5,19 +5,18 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request) {
   try {
-    const { name, email, message } = await request.json()
+    const { name, email, message, websiteavo } = await request.json()
+
+    if (websiteavo) {
+      return NextResponse.json({ success: true })
+    }
 
     await resend.emails.send({
       from: 'AvoriazLoc <avo@email.avoriazloc.fr>',
       to: 'morgane.couvet@gmail.com',
       subject: `Nouveau message de ${name} sur avoriazloc.fr`,
       replyTo: email,
-      
-      html: `
-        <p><strong>Nom :</strong> ${name}</p>
-        <p><strong>Email :</strong> ${email}</p>
-        <p><strong>Message :</strong><br/>${message.replace(/\n/g, '<br/>')}</p>
-      `,
+      text: `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
     })
 
     return NextResponse.json({ success: true })

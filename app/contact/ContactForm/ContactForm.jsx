@@ -98,6 +98,14 @@ export function ContactForm() {
             <p className="message-error">{errors.message.message}</p>
           )}
         </div>
+        <input
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="sr-only"
+          {...register('websiteavo')}
+        />
         <div>
           <div className="checkbox-container">
             <input
@@ -147,7 +155,7 @@ export function ContactForm() {
           <button
             type="button"
             onClick={closeDialog}
-            aria-label='Close'
+            aria-label="Close"
           >
             <IoMdCloseCircle />
           </button>
