@@ -163,15 +163,11 @@ export function AccesContent() {
             <tbody>
               <tr>
                 <td>Tous les jours</td>
-                <td>
-                  9h30 - 12h30
-                  <br />
-                  13h30 - 18h30
-                </td>
+                <td>9h00 - 18h30</td>
               </tr>
               <tr>
                 <td colSpan={2}>
-                  <span>Rotation toutes les 30 minutes</span>
+                  <span>Rotation toutes les 20 minutes</span>
                 </td>
               </tr>
             </tbody>
@@ -235,19 +231,8 @@ export function AccesContent() {
           <li>
             Parking des Prodains: 182€ la semaine. Pas de réservation.
             <br />
-            🚨 Attention, Morzine change (encore) sa manière de fonctionner
-            concernant ses parkings:
-            <LinkAria
-              className="link"
-              href={
-                'https://www.mairie-morzine-avoriaz.com/decouverte/circuler-stationner-morzine/'
-              }
-              target="_blank"
-              referrerPolicy="no-opener no-referrer"
-            >
-              plus d'info
-            </LinkAria>
-            .
+            🚨 L'année dernière (2025-26), il n'était pas possible de réserver
+            ce parking à l'avance. En attente d'une nouvelle réglementation ?
           </li>
           <li>
             Parkings couverts: 100€ la semaine. Pas de réservation à moins de 3
@@ -310,7 +295,7 @@ export function AccesContent() {
           <LinkAria
             className="link"
             href={
-              'https://www.sbb.ch/fr/informations-voyages/gares/trouver-gare/gare-de-geneve-cornavin.html'
+              'https://www.sbb.ch/fr/informations-voyages/gares/trouver-gare/gare-de-geneve.html'
             }
             target="_blank"
             referrerPolicy="no-opener no-referrer"
@@ -337,7 +322,7 @@ export function AccesContent() {
           de l’
           <LinkAria
             className="link"
-            href={'https://www.gva.ch/fr/'}
+            href={'https://www.gva.ch/fr/passagers'}
             target="_blank"
             referrerPolicy="no-opener no-referrer"
           >

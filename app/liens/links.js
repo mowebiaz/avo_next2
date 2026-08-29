@@ -55,12 +55,12 @@ export const links = [
   },
   {
     name: 'Garderie',
-    link: 'https://www.esf-avoriaz.com/tout-petits/garderie-avrizou/',
+    link: 'https://www.esf-avoriaz.com/garderie-village-des-enfants/#garderie-avrizou',
     category: 'sur place',
   },
   {
-    name: 'Antoine Ski',
-    link: 'https://www.antoine-ski.fr/',
+    name: 'Antoine Sports',
+    link: 'https://www.antoine-sports.com/',
     category: 'ski',
   },
   {
